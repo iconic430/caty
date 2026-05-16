@@ -190,64 +190,131 @@ export default function App() {
         </Section>
 
         {/* SECTION 6: SERVICIOS */}
-        <Section>
-          <Card>
-            <h2 className="text-2xl md:text-3xl font-bold mb-10 text-center">Nuestros servicios principales:</h2>
-            
-            <div className="space-y-12 mb-12">
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="w-6 h-6 rounded-md bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                    <Sparkles size={14} />
-                  </div>
-                  <h3 className="text-xl font-bold">Carillas Cerámicas</h3>
-                </div>
-                <p className="text-zinc-500 text-sm pl-9">
-                  Restauraciones de alta estética que transforman tu sonrisa con naturalidad.
-                </p>
-                <div className="pl-9 mt-2 flex items-center gap-4 text-xs font-bold text-brand-secondary">
-                  <span>Desde <span className="line-through opacity-50">$8,000</span> $6,000 MXN / carilla</span>
+        <Section id="servicios">
+          <div className="text-center mb-12">
+            <Badge>Protocolos Exclusivos</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2">Nuestras Experiencias</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* SMILE GLOW UP */}
+            <Card className="flex flex-col p-8 border-2 border-brand-secondary/20 relative overflow-hidden ring-4 ring-brand-primary/5">
+              <div className="absolute top-4 right-4 translate-x-2 -translate-y-2">
+                <div className="bg-brand-secondary text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
+                  ⭐ MÁS ELEGIDO
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="w-6 h-6 rounded-md bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                    <Sparkles size={14} />
-                  </div>
-                  <h3 className="text-xl font-bold">Carillas de Resina</h3>
+              <div className="mb-6">
+                <h3 className="text-xl font-bold uppercase letter-spacing-tag leading-tight">SMILE GLOW UP EXPERIENCE</h3>
+                <p className="text-brand-primary font-serif italic text-lg mt-2">6 Carillas de Porcelana</p>
+              </div>
+
+              <div className="bg-zinc-50 rounded-2xl p-6 mb-8 border border-brand-border">
+                <div className="flex justify-between items-center mb-2 text-zinc-400 text-sm">
+                  <span>Antes:</span>
+                  <span className="line-through">$60,100</span>
                 </div>
-                <p className="text-zinc-500 text-sm pl-9">
-                  Opción versátil y mínimamente invasiva para corregir imperfecciones.
-                </p>
-                <div className="pl-9 mt-2 flex items-center gap-4 text-xs font-bold text-brand-secondary">
-                  <span>Desde <span className="line-through opacity-50">$22,999</span> $19,999 MXN / docena</span>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-zinc-600">Hoy:</span>
+                  <span className="text-2xl font-bold text-brand-secondary">$49,500</span>
+                </div>
+                <div className="pt-3 border-t border-dashed border-zinc-300 flex justify-between items-center">
+                  <span className="text-xs uppercase font-bold text-brand-primary">Ahorras:</span>
+                  <span className="bg-brand-primary text-white text-[10px] font-bold px-2 py-1 rounded-full">$10,600</span>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="w-6 h-6 rounded-md bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                    <Sparkles size={14} />
-                  </div>
-                  <h3 className="text-xl font-bold">Diseño de Sonrisa</h3>
-                </div>
-                <p className="text-zinc-500 text-sm pl-9">
-                  Planificación integral basada en armonía facial y diagnóstico personalizado.
-                </p>
+              <ul className="space-y-3 mb-10 flex-grow">
+                {[
+                  { name: "6 Carillas de Porcelana premium", price: "$48,000", badge: "INCLUIDO" },
+                  { name: "Diseño de sonrisa digital", price: "$2,000", badge: "GRATIS" },
+                  { name: "Análisis facial", price: "$400", badge: "GRATIS" },
+                  { name: "Blanqueamiento", price: "$3,000", badge: "50% OFF" },
+                  { name: "Limpieza completa", price: "$1,200", badge: "GRATIS" },
+                  { name: "Consulta especializada", price: "$800", badge: "GRATIS" },
+                  { name: "Fotografía clínica profesional", price: "$400", badge: "GRATIS" }
+                ].map((service, i) => (
+                  <li key={i} className="flex items-center justify-between text-[10px] font-bold text-zinc-600 gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-1 h-1 rounded-full bg-brand-primary flex-shrink-0" />
+                      <span className="truncate uppercase">{service.name}</span>
+                    </div>
+                    <div className="flex-grow border-b border-dotted border-zinc-200 mt-1" />
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="line-through text-zinc-400 font-normal">{service.price}</span>
+                      <span className="text-[#BF40BF] font-black drop-shadow-[0_0_5px_rgba(191,64,191,0.4)]">
+                        {service.badge}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <Button fullWidth className="py-5 shadow-xl shadow-brand-primary/20" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
+                AGENDAR VALORACIÓN
+              </Button>
+            </Card>
+
+            {/* SMILE GLOW EXPRESS */}
+            <Card className="flex flex-col p-8 border-2 border-brand-border hover:border-brand-primary/30 transition-colors">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold uppercase letter-spacing-tag leading-tight">SMILE GLOW EXPRESS EXPERIENCE</h3>
+                <p className="text-brand-primary font-serif italic text-lg mt-2">6 Resinas Inyectadas</p>
               </div>
-            </div>
 
-            <div className="pt-8 border-t border-brand-border text-center mb-8">
-              <span className="text-sm uppercase letter-spacing-tag font-bold text-zinc-400">Sesión de valoración:</span>
-              <div className="text-3xl font-bold text-brand-primary mt-1 uppercase italic">Personalizada</div>
-            </div>
+              <div className="bg-zinc-50 rounded-2xl p-6 mb-8 border border-brand-border">
+                <div className="flex justify-between items-center mb-2 text-zinc-400 text-sm">
+                  <span>Antes:</span>
+                  <span className="line-through">$34,800</span>
+                </div>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-zinc-600">Hoy:</span>
+                  <span className="text-2xl font-bold text-brand-secondary">$28,500</span>
+                </div>
+                <div className="pt-3 border-t border-dashed border-zinc-300 flex justify-between items-center">
+                  <span className="text-xs uppercase font-bold text-brand-primary">Ahorras:</span>
+                  <span className="bg-brand-primary text-white text-[10px] font-bold px-2 py-1 rounded-full">$6,300</span>
+                </div>
+              </div>
 
-            <Button fullWidth className="py-6 text-base group" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
-              QUIERO MI SESIÓN DE VALORACIÓN 
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Card>
+              <ul className="space-y-3 mb-10 flex-grow">
+                {[
+                  { name: "6 Resinas Inyectadas", price: "$27,000", badge: "INCLUIDO" },
+                  { name: "Diseño de sonrisa digital", price: "$2,000", badge: "GRATIS" },
+                  { name: "Análisis facial", price: "$400", badge: "GRATIS" },
+                  { name: "Blanqueamiento", price: "$3,000", badge: "50% OFF" },
+                  { name: "Limpieza completa", price: "$1,200", badge: "GRATIS" },
+                  { name: "Consulta especializada", price: "$800", badge: "GRATIS" },
+                  { name: "Fotografía clínica profesional", price: "$400", badge: "GRATIS" }
+                ].map((service, i) => (
+                  <li key={i} className="flex items-center justify-between text-[10px] font-bold text-zinc-600 gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-1 h-1 rounded-full bg-brand-primary flex-shrink-0" />
+                      <span className="truncate uppercase">{service.name}</span>
+                    </div>
+                    <div className="flex-grow border-b border-dotted border-zinc-200 mt-1" />
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="line-through text-zinc-400 font-normal">{service.price}</span>
+                      <span className="text-[#BF40BF] font-black drop-shadow-[0_0_5px_rgba(191,64,191,0.4)]">
+                        {service.badge}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <Button fullWidth className="py-5" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
+                AGENDAR VALORACIÓN
+              </Button>
+            </Card>
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-brand-border text-center">
+            <p className="text-zinc-400 text-sm italic">
+              Planificación integral basada en armonía facial y diagnóstico por la Dra. Caty Avila.
+            </p>
+          </div>
         </Section>
 
         {/* SECTION 7: ¿POR QUE ELEGIRNOS? */}
